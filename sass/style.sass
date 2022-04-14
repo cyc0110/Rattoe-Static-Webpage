@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap')
+
+// 顏色變數
+$colorLightNavy: #135384
+$colorDenimBlue: #3B5998
+$colorBlueGrey: #6D899E
+$colorPastelRed: #DC5D5B
+$colorSunflowerYellow: #FFCE00
+$colorTealish: #20AFAB
+$colorGrey8: #444444
+$colorSlateGrey: #5A6266
+$colorWarmGrey: #898989
+$colorSlateGrey2: #9B9B9B
+$colorPinkishGrey: #CACACA
+$colorWhite: #FFFFFF
+$colorWhite2: #DFDFDF
+$colorWhite3: #E7E7E7
+$colorWhite4: #ECECEC
+$colorWhite5: #FBFBFB
+//按鈕大小
+$paddingLg: 30px
+$paddingMd: 20px
+$paddingSm: 10px
+
+$fatness: 3px
+
+// 模組化
+=size($w,$h:$w,$bdrs:0px)
+  width: $w
+  height: $h
+  border-radius: $bdrs
+=flex($j:center,$a:center)
+  display: flex
+  justify-content: $j
+  align-items: $a
+=adpos($l:initial,$t:initial)
+  position: absolute
+  left: $l
+  top: $t
+=button($color:$colorLightNavy,$fontColor:$colorLightNavy)
+  padding: 1% 6%
+  background-color: $color
+  color: $fontColor
+  &.Lg
+    padding: $paddingLg $paddingLg*2
+  &.Md
+    padding: $paddingMd $paddingMd*2
+  &.Sm
+    padding: $paddingSm $paddingSm*2
+  transition: 0.5s
+  &:hover
+    background-color: darken($color,8)
+
+
+*
+//   border: solid 1px black
+  margin: 0
+
+html,body
+  +size(100%)
+  background-color: $colorPinkishGrey
+  position: relative
+
+a
+  color: $colorLightNavy
+  text-decoration: initial
+  font-weight: 600
+
+hr
+  margin: 2% 0
+
+h2,p
+  color: $colorSlateGrey2
+  line-height: 140%
+h2
+  // border-bottom: solid 1px $colorSlateGrey
+  font-size: 1.75rem
+  padding: 4% 0
+
+header
+  background-color: $colorWhite
+  border-top: solid 4px $colorLightNavy
+  box-shadow: 0 4px 15px rgba($colorGrey8,0.1%)
+  position: sticky
+  top: 0
+  z-index: 100
+
+// showmenu
+.menu-icon
+  +flex
+  +size(50px)
+  padding: 8px
+  cursor: pointer
+  margin-left: 5px
+  z-index: 1
+  display: none
+  
+  &_hamburger
+    width: 100%
+    height: $fatness
+    background: $colorLightNavy
+    position: relative
+    border-radius: 5px
+    transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550)
+    
+    &:before, &:after
+      position: absolute
+      content: ''
+      width: 100%
+      height: $fatness
+      background: $colorLightNavy
+      border-radius: 5px
+      transform: translateY(-15px)
+      transition: all 500ms cubic-bezier(0.680, -0.550, 0.265, 1.550)
+      
+    &:before
+      transform: translateY(-15px)
+    &:after
+      transform: translateY(15px)
+  
+  &.open
+    .menu-icon_hamburger
+      transform: translateX(-30px)
+      background: transparent
+      &:before
+        transform: translate(30px) rotate(45deg)
+        background: $colorLightNavy
+
+      &:after
+        transform: translate(30px) rotate(-45deg)
+        background: $colorLightNavy
+
+
+
+.container
+  +flex
+  max-width: 1200px
+  padding: 1% 0
+  margin: 0 auto
+  .logo
+    flex: 1
+    padding: 0 1.5%
+  .nav
+    flex: 4
+    ul.menu
+      +flex
+      justify-content: flex-start
+      li
+        padding: 1% 2.5%
+        margin: 0 1.5%
+        color: $colorLightNavy
+        font-weight: 600
+        &:hover
+          border-bottom: solid 2px $colorLightNavy
+        &:active
+
+      .filled
+        background-color: $colorLightNavy
+        border-radius: 25px
+        border: 0
+        a
+          color: $colorWhite
+  .nav-right
+    flex: 1
+    +flex
+    li
+      margin-left: 8%
+      .logintxt
+        color: $colorWarmGrey
+    .login
+      +flex
+    .fbicon img
+      height: 36px
+    .login img
+      height: 20px
+
+.showmenu
+  display: none
+
+.content
+  background-color: $colorWhite
+  +size(100%,auto)
+.inner
+  max-width: 1200px
+  margin: 0 auto
+  padding-bottom: 2%
+  .bottom
+    padding: 2%
+    overflow: hidden
+    h2,p
+      color: $colorGrey8
+  .btn
+    float: right
+    margin-top: 2%
+    padding: 0.75% 1.75%
+    border-radius: 50px
+    background-color: $colorWhite
+    color: $colorSlateGrey2
+    border: solid 1px $colorSlateGrey2
+    &:hover
+      background-color: $colorSlateGrey2
+      color: $colorWhite
+  .cta
+    background-color: #4267B2
+    margin-top: 2%
+    padding: 1.5% 3%
+    box-sizing: border-box
+  .tags
+    justify-content: center
+  ul.icons
+    +flex
+    flex: 2
+    justify-content: flex-start
+    img
+      max-width: 50%
+
+.wrap
+  +flex
+  flex-wrap: wrap
+  max-width: 1200px
+  margin: 2% auto
+  justify-content: space-between
+  .cards
+    +size(32.33333%,auto,10px)
+    overflow: hidden
+    background-color: $colorWhite
+    margin: 0.5% auto
+    box-shadow: 2px 4px 15px rgba($colorGrey8,0.1%)
+    transition: 0.5s
+    &:hover
+      transform: translate(-4px,-4px)
+      box-shadow: 4px 8px 30px rgba($colorGrey8,0.5%)
+    .top
+      flex: 4
+      background-size: cover
+      padding-bottom: 60%
+    .pic0
+      flex: 16
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_05.png)
+    .pic1
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_05.png)
+      border-bottom: solid 8px $colorTealish
+    .pic2
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_02.png)
+      border-bottom: solid 8px $colorSunflowerYellow
+    .pic3
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_03.png)
+      border-bottom: solid 8px $colorPastelRed
+    .pic4
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_04.png)
+      border-bottom: solid 8px $colorTealish
+    .pic5
+      background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_01.png)
+      border-bottom: solid 8px $colorSunflowerYellow
+    &.big
+      +size(48%,auto,15px)
+    .bottom
+      flex: 6
+      padding: 4% 8% 4% 8%
+      .content,.day
+        padding-top: 2%
+    .link
+      +flex
+      margin-top: 4%
+    ul.icons
+      +flex
+      flex: 2
+      justify-content: flex-start
+      img
+        max-width: 50%
+    .button
+      flex: 1
+      padding: 2% 1%
+      +size(8%,4%,50px)
+    .btn1
+      background-color: $colorTealish
+    .btn2
+      background-color: $colorSunflowerYellow
+    .btn3
+      background-color: $colorPastelRed
+    
+.tags
+  +flex(flex-start,center)
+  flex-wrap: wrap
+  padding: 1%
+.tag
+  padding: 1% 1.5%
+  margin: 1%
+  border: solid 1px $colorSlateGrey2
+  color: $colorSlateGrey2
+  transition: 0.5s
+  &:hover
+    background-color: $colorPinkishGrey
+    color: $colorWhite
+
+.maincard
+  display: flex
+  justify-content: center
+  margin: 2% auto
+  max-width: 1200px
+  border-radius: 25px
+  overflow: hidden
+  background-color: #fff
+  .left
+    flex: 6
+    background-image: url(https://raw.githubusercontent.com/cyc0110/Rattoe-Static-Webpage/main/images/post_cover/post_cover_05.png)
+    background-size: cover
+  .right
+    flex: 4
+    padding: 2.5% 4% 4%
+    .link
+      +flex
+      margin-top: 4%
+    ul.icons
+      +flex
+      flex: 2
+      justify-content: flex-start
+      img
+        max-width: 50%
+    .button
+      flex: 1
+      padding: 2% 1%
+      +size(8%,4%,50px)
+
+.title
+  +flex
+  margin: 0 auto
+  h2
+    color: $colorLightNavy
+    border-bottom: solid 2px $colorLightNavy
+
+.cta
+  +flex
+  +size(32%,6%,100px)
+  margin: 4% auto
+  +button($colorLightNavy,$colorWhite)
+  box-sizing: border-box
+
+footer
+  background-color: $colorSlateGrey
+  color: $colorWhite
+  .footerinner
+    +flex
+    max-width: 1200px
+    margin: 0 auto
+    padding: 1%
+    text-align: center
+
+@media only screen and (max-width: 768px)
+  .menu-icon
+    display: flex
+
+  .wrap
+    flex-wrap: wrap
+    .cards
+      width: 90%
+      margin-top: 4%
+      &.big
+        width: 90%
+        margin-top: 4%
+  .card
+    flex-direction: column
+    margin: 0
+    .left
+      padding-bottom: 50%
+    .right
+      p,.day,.tags,ul.icons
+        display: none
+  .maincard
+    flex-direction: column
+    width: 90%
+    .left
+      padding-bottom: 50%
+    .right
+      p,.day,.tags,ul.icons,img
+        display: none
+  .footerinner
+    font-size: 1rem
+  .container
+    .logo
+      flex: 1
+      margin: 0 24%
+      margin-right: 2%
+      .img
+        margin: 0 auto
+    .nav
+      flex: 0
+      ul.menu
+        display: none
+    .nav-right
+      display: none
