@@ -230,7 +230,7 @@ header {
 .inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 2%;
+  padding: 0 4% 2% 4%;
 }
 
 .inner .bottom {
